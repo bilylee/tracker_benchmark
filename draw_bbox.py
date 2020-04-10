@@ -8,54 +8,54 @@ from scripts import *
 
 def main():
     evalTypes = ['OPE', 'SRE', 'TRE']
-    print "Eval types"
+    print("Eval types")
     for i in range(len(evalTypes)):
         evalType = evalTypes[i]
-        print "{0:2d}. {1}".format(i+1, evalType)
+        print("{0:2d}. {1}".format(i+1, evalType))
 
     while True:
-        n = int(raw_input("\nInput evalType number (-1 to exit) : "))
+        n = int(input("\nInput evalType number (-1 to exit) : "))
         if n == -1:
             sys.exit()
         try:
             evalType = evalTypes[n-1]
             break
         except:
-            print "invalid number"
+            print("invalid number")
 
     src = RESULT_SRC.format(evalType)
     trackers = os.listdir(src)
-    print "\nTrackers"
+    print("\nTrackers")
     for i in range(len(trackers)):
         t = trackers[i]
-        print "{0:2d}. {1}".format(i+1, t)
+        print("{0:2d}. {1}".format(i+1, t))
 
     while True:
-        n = int(raw_input("\nInput tracker number (-1 to exit) : "))
+        n = int(input("\nInput tracker number (-1 to exit) : "))
         if n == -1:
             sys.exit()
         try:
             tracker = trackers[n-1]
             break
         except:
-            print "invalid number"
+            print("invalid number")
 
     src = src + '/' + tracker + '/'
     seqs = [x for x in os.listdir(src) if x.endswith('.json')]    
   
     while True:
-        print "\nSequences"
+        print("\nSequences")
         for i in range(len(seqs)):
             s = seqs[i]
-            print "{0:2d}. {1}".format(i+1, s)
+            print("{0:2d}. {1}".format(i+1, s))
         results = []
-        n = int(raw_input("\nInput sequence number (-1 to exit) : "))
+        n = int(input("\nInput sequence number (-1 to exit) : "))
         if n == -1:
             sys.exit()
         try:
             resultFile = open(os.path.join(src, seqs[n-1]))
         except:
-            print "invalid number"
+            print("invalid number")
 
         string = resultFile.read()
         jsonList = json.loads(string)
@@ -65,15 +65,15 @@ def main():
 
         for i in range(len(results)):
             result = results[i]
-            print "{0:2d}. startFrame : {1},\tshiftType : {2}".format(i+1, result.startFrame, result.shiftType)
+            print("{0:2d}. startFrame : {1},\tshiftType : {2}".format(i+1, result.startFrame, result.shiftType))
 
-        n = int(raw_input("\nInput result number (-1 to exit) : "))
+        n = int(input("\nInput result number (-1 to exit) : "))
         if n == -1:
             sys.exit()
         try:
             result = results[n-1]
         except:
-            print "invalid number"
+            print("invalid number")
             continue
 
         seq = butil.load_seq_config(result.seqName)

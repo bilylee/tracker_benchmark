@@ -48,7 +48,7 @@ shiftTypeSet = ['left','right','up','down','topLeft','topRight',
 
 # for evaluating results
 thresholdSetOverlap = [x/float(20) for x in range(21)]
-thresholdSetError = range(0, 51)
+thresholdSetError = list(range(0, 51))
 
 # for drawing plot
 MAXIMUM_LINES = 10

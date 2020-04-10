@@ -12,7 +12,7 @@ def split_seq_TRE(seq, segNum, rect_anno):
         if not isinstance(idxExclude[0], np.ndarray):
             idxExclude = [idxExclude]
 
-    idx = range(1, seq.len + 1)
+    idx = list(range(1, seq.len + 1))
 
     for j in range(len(idxExclude)):
         begin = idxExclude[j][0] - 1
@@ -25,7 +25,7 @@ def split_seq_TRE(seq, segNum, rect_anno):
         if r[0]<=0 or r[1]<=0 or r[2]<=0 or r[3]<=0:
             idx[i] = 0
     idx = [x for x in idx if x > 0]
-    for i in reversed(range(len(idx))):
+    for i in reversed(list(range(len(idx)))):
         if seq.len - idx[i] + 1 >= minNum:
             endSeg = idx[i]
             endSegIdx = i + 1

@@ -6,7 +6,7 @@ from scripts import *
 
 def main():
     evalTypes = ['OPE']
-    testname = 'tb50'
+    testname = 'tb100'
     for i in range(len(evalTypes)):
         evalType = evalTypes[i]
         result_src = RESULT_SRC.format(evalType)
@@ -41,7 +41,7 @@ def get_graph(scoreList, fignum, evalType, testname):
                 plt.plot(thresholdSetOverlap, attr.successRateList, 
                     label='', alpha=0.5, c='#202020', ls='--')
         else:
-            print 'err'
+            print('err')
     plt.title('{0}_{1} (sequence average)'.format(evalType, testname.upper()))
     plt.rcParams.update({'axes.titlesize': 'medium'})
     plt.xlabel('thresholds')

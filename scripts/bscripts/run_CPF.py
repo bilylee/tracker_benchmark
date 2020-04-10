@@ -14,8 +14,8 @@ def run_CPF(seq, rp, bSaveImage):
     if not os.path.exists(path):
         os.makedirs(path)
 
-    command = map(str,['ObjTrk.exe', '1', path , seq.name, seq.path,
-        seq.startFrame, seq.endFrame, seq.nz, seq.ext, x, y, w, h])
+    command = list(map(str,['ObjTrk.exe', '1', path , seq.name, seq.path,
+        seq.startFrame, seq.endFrame, seq.nz, seq.ext, x, y, w, h]))
 
     tic = time.clock()
     subprocess.call(command)

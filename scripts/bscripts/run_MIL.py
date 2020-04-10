@@ -14,8 +14,8 @@ def run_MIL(seq, rp, bSaveImage):
     if not os.path.exists(path):
         os.makedirs(path)
 
-    command = map(str,['MIL.exe', '1', '4', '30', '0', '0', path , seq.name, 
-        seq.path, seq.startFrame, seq.endFrame, seq.nz, seq.ext, x, y, w, h])
+    command = list(map(str,['MIL.exe', '1', '4', '30', '0', '0', path , seq.name, 
+        seq.path, seq.startFrame, seq.endFrame, seq.nz, seq.ext, x, y, w, h]))
 
     tic = time.clock()
     subprocess.call(command)

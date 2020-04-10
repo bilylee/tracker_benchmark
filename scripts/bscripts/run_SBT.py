@@ -38,9 +38,9 @@ def run_SBT(seq, rp, bSaveImage):
     if not os.path.exists(path):
         os.makedirs(path)
 
-    command = map(str,['SemiBoostingTracker_b.exe', '100', '0.99', '2', 
+    command = list(map(str,['SemiBoostingTracker_b.exe', '100', '0.99', '2', 
         '0', '0', '0', seq.name, seq.path, seq.startFrame, seq.endFrame, 
-        seq.nz, seq.ext, x, y, w, h])
+        seq.nz, seq.ext, x, y, w, h]))
 
     # command = ['SemiBoostingTracker1.exe']
 

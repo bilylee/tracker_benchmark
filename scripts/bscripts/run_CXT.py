@@ -14,8 +14,8 @@ def run_CXT(seq, rp, bSaveImage):
     if not os.path.exists(path):
         os.makedirs(path)
 
-    command = map(str,['CXT.exe', '1', '0', '0', '1', seq.name, seq.path, path,
-        seq.startFrame, seq.endFrame, seq.nz, seq.ext, x, y, w, h])
+    command = list(map(str,['CXT.exe', '1', '0', '0', '1', seq.name, seq.path, path,
+        seq.startFrame, seq.endFrame, seq.nz, seq.ext, x, y, w, h]))
 
     tic = time.clock()
     subprocess.call(command)

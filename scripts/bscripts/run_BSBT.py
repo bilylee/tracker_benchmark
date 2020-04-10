@@ -14,9 +14,9 @@ def run_BSBT(seq, rp, bSaveImage):
     if not os.path.exists(path):
         os.makedirs(path)
 
-    command = map(str,['BeyondSemiBoostingTracker.exe', '100', '0.99', '2', 
+    command = list(map(str,['BeyondSemiBoostingTracker.exe', '100', '0.99', '2', 
         '0', '0', '0', seq.name, seq.path, seq.startFrame, seq.endFrame, 
-        seq.nz, seq.ext, x, y, w, h])
+        seq.nz, seq.ext, x, y, w, h]))
 
     tic = time.clock()
     subprocess.call(command)

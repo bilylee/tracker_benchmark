@@ -9,9 +9,9 @@ def run_Frag(seq, rp, bSaveImage):
     w = seq.init_rect[2]
     h = seq.init_rect[3]
 
-    command = map(str,['fragtrack.exe', '25', '16', '3', '0', '0',
+    command = list(map(str,['fragtrack.exe', '25', '16', '3', '0', '0',
         seq.name, seq.path, seq.startFrame, seq.endFrame, \
-        seq.nz, seq.ext, x, y, w, h])
+        seq.nz, seq.ext, x, y, w, h]))
 
     tic = time.clock()
     subprocess.call(command)

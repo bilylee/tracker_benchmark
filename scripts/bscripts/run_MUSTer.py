@@ -10,7 +10,7 @@ def run_MUSTer(seq, rp, bSaveImage):
     img_files = sorted([x for x in os.listdir(seq.path) if x.endswith(seq.ext)])
     source['img_files'] = img_files[seq.startFrame-1:seq.endFrame]
     if m == None:
-        print 'Starting matlab engine...'
+        print('Starting matlab engine...')
         m = matlab.engine.start_matlab()
     m.addpath(m.genpath('.', nargout=1), nargout=0)
     seq.init_rect = matlab.double(seq.init_rect)
