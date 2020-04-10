@@ -7,7 +7,7 @@ def corners2rect(corners):
     y = result_corners[1,0]
     w = result_corners[0,2] - x
     h = result_corners[1,2] - y
-    rect = map(int, [x, y, w, h])
+    rect = list(map(int, [x, y, w, h]))
     return rect
 
 def rect_affine_IVT(tmplsize, res):
@@ -102,7 +102,7 @@ def calc_rect_center(*params):
     y = result_corners[1,0]
     w = result_corners[0,2] - x
     h = result_corners[1,2] - y
-    rect = map(int, [x, y, w, h])
+    rect = list(map(int, [x, y, w, h]))
     center = np.mean(corners[:,0:4],1)
     return rect, center, corners
 

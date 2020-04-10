@@ -15,11 +15,11 @@ def save_seq_result(result):
     try:
         string = json.dumps(result, default=lambda o : o.__dict__)
     except:
-        print map(type, result[0].__dict__.values())
+        print(list(map(type, list(result[0].__dict__.values()))))
         sys.exit()
     fileName = src + '/{0}.json'.format(seqName)
     resultFile = open(fileName, 'wb')
-    resultFile.write(string)
+    resultFile.write(string.encode())
     resultFile.close()
 
 def save_scores(scoreList, testname=None):
@@ -36,7 +36,7 @@ def save_scores(scoreList, testname=None):
         string = json.dumps(score, default=lambda o : o.__dict__)
         fileName = scoreSrc + '/{0}.json'.format(score.name)
         scoreFile = open(fileName, 'wb')
-        scoreFile.write(string)
+        scoreFile.write(string.encode())
         scoreFile.close()
 
 def load_all_results(evalType):
@@ -51,7 +51,7 @@ def load_all_results(evalType):
 
 def load_result(evalType, tracker):
     resultSRC = RESULT_SRC.format(evalType)
-    print 'Loading \'{0}\'...'.format(tracker),
+    print('Loading \'{0}\'...'.format(tracker), end=' ')
     src = os.path.join(resultSRC, tracker)
     resultNames = os.listdir(src)
     attrs = []
@@ -65,7 +65,7 @@ def load_result(evalType, tracker):
                 string = attrFile.read()
                 j = json.loads(string)
                 attr = Attribute(**j)
-                attr.successRateList = map(lambda o:o*100, attr.successRateList)
+                attr.successRateList = [o*100 for o in attr.successRateList]
                 attrs.append(attr)
                 attrs.sort()
         elif name.endswith('.json'):
@@ -76,12 +76,12 @@ def load_result(evalType, tracker):
                 results.append([Result(**j) for j in jsonList])
             elif type(jsonList) is dict:
                 results.append([Result(**jsonList)])
-    print '({0} seqs)'.format(len(resultNames) - 1)
+    print('({0} seqs)'.format(len(resultNames) - 1))
     return results, attrs
 
 def load_seq_result(evalType, tracker, sequence):
     resultSRC = RESULT_SRC.format(evalType)
-    print 'Loading {0}/{1}...'.format(tracker, sequence)
+    print('Loading {0}/{1}...'.format(tracker, sequence))
     src = os.path.join(resultSRC, tracker)
     result_src = os.path.join(src, sequence+'.json')
     resultFile = open(result_src)
@@ -101,7 +101,7 @@ def load_all_scores(evalType, testname):
 
 def load_scores(evalType, tracker, testname):
     resultSRC = RESULT_SRC.format(evalType)
-    print 'Loading \'{0}\'...'.format(tracker)
+    print('Loading \'{0}\'...'.format(tracker))
     src = os.path.join(resultSRC, tracker+'/scores_{0}'.format(testname))
     attrNames = os.listdir(src)
     attrs = []
@@ -110,7 +110,7 @@ def load_scores(evalType, tracker, testname):
         string = attrFile.read()
         j = json.loads(string)
         attr = Score(**j)
-        attr.successRateList = map(lambda o:o*100, attr.successRateList)
+        attr.successRateList = [o*100 for o in attr.successRateList]
         attrs.append(attr)
         attrs.sort()
     return attrs

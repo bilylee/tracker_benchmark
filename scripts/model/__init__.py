@@ -1,3 +1,3 @@
-from score import *
-from result import *
-from sequence import *
+from .score import *
+from .result import *
+from .sequence import *

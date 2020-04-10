@@ -14,9 +14,9 @@ def run_Struck(seq, rp, bSaveImage):
     if not os.path.exists(path):
         os.makedirs(path)
 
-    command = map(str,['struck.exe', 'haar', 'gaussian', '0.2', '100', '100',
+    command = list(map(str,['struck.exe', 'haar', 'gaussian', '0.2', '100', '100',
         '30', '10', bSaveImage, bSaveImage, seq.name, seq.path, seq.startFrame,
-        seq.endFrame, seq.nz, seq.ext, x, y, w, h])
+        seq.endFrame, seq.nz, seq.ext, x, y, w, h]))
 
     tic = time.clock()
     subprocess.call(command)
